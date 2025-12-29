@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Products\ProductsController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -20,4 +21,5 @@ Route::middleware('auth:backend')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [DashboardController::class, 'updateProfile'])->name('profile.update');
+    Route::resource('products', ProductsController::class);
 });

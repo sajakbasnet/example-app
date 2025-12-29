@@ -142,6 +142,38 @@
             margin-bottom: 2rem;
         }
 
+        /* Actions Section - For search and create button */
+        .actions-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-form {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-form .input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+
+        .search-form .input-group .form-control {
+            flex: 1;
+        }
+
+        .search-form .input-group .btn {
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .card-title {
             font-size: 1.25rem;
             font-weight: 600;
@@ -171,18 +203,122 @@
             font-weight: 500;
         }
 
-        .form-group input {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.75rem;
             border: 2px solid #e1e5e9;
             border-radius: 5px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: white;
         }
 
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Form Row for two-column layout */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Input with prefix (for price field) */
+        .input-with-prefix {
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        .input-with-prefix .form-control {
+            padding-left: 2rem;
+        }
+
+        /* Checkbox styling */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .form-help {
+            color: #666;
+            font-size: 0.875rem;
+            margin-left: 1.5rem;
+        }
+
+        /* Error summary */
+        .error-summary {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #f5c6cb;
+        }
+
+        .error-summary h4 {
+            margin-bottom: 0.5rem;
+            color: #721c24;
+        }
+
+        .error-summary ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        /* Form actions */
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e1e5e9;
+            margin-top: 2rem;
+        }
+
+        .form-actions .btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Product form specific styling */
+        .product-form {
+            max-width: 800px;
         }
 
         .form-group .error {
@@ -213,6 +349,27 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+
         /* Stats Grid */
         .stats-grid {
             display: grid;
@@ -241,6 +398,73 @@
             font-size: 0.9rem;
         }
 
+        /* Table Styles */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            background: white;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .table thead th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid #e1e5e9;
+            transition: background-color 0.2s;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .table tbody td {
+            padding: 1rem;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .table-bordered {
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table-bordered thead th {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .table-bordered thead th:not(:last-child) {
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .table-bordered tbody td:not(:last-child) {
+            border-right: 1px solid #e1e5e9;
+        }
+
+        .card-body {
+            padding: 0;
+        }
+
+        .card-body .table {
+            margin: 0;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -260,6 +484,87 @@
 
             .main-container {
                 padding: 0 1rem;
+            }
+
+            .table {
+                font-size: 0.875rem;
+            }
+
+            .table thead th,
+            .table tbody td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .table thead th {
+                font-size: 0.8rem;
+            }
+
+            /* Mobile responsive for actions section */
+            .actions-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-form {
+                min-width: auto;
+            }
+
+            .search-form .input-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .search-form .input-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Mobile responsive for form rows */
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Mobile responsive for form actions */
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Mobile responsive for cards */
+            .card {
+                padding: 1rem;
+            }
+
+            .product-form {
+                max-width: 100%;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.625rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.625rem;
+                font-size: 0.9rem;
+            }
+
+            .input-with-prefix .form-control {
+                padding-left: 1.75rem;
             }
         }
     </style>
@@ -295,6 +600,9 @@
             </a>
             <a href="/profile" class="nav-item {{ request()->is('profile') ? 'active' : '' }}">
                 Profile
+            </a>
+            <a href="/products" class="nav-item {{ request()->is('products') ? 'active' : '' }}">
+                Products
             </a>
         </div>
     </nav>

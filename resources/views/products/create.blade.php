@@ -35,7 +35,7 @@
                     <label for="price">Price *</label>
                     <div class="input-with-prefix">
                         <span class="input-prefix">$</span>
-                        <input type="number" name="price" class="form-control" placeholder="0.00" step="0.01"
+                        <input type="number" name="money" class="form-control" placeholder="0.00" step="0.01"
                             min="0" required>
                     </div>
                     @error('price')

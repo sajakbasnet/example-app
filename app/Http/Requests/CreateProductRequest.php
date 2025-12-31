@@ -24,13 +24,13 @@ class CreateProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
+            'money' => 'required|numeric|min:0',
             'category' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
             'size' => 'required|string|max:255',
             'color' => 'required|string|max:255',
             'material' => 'required|string|max:255',
-            'status' => 'required|boolean',
+            'status' => 'nullable|boolean',
         ];
     }
 }

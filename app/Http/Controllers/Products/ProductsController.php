@@ -44,4 +44,28 @@ class ProductsController extends Controller
         $product = Products::create($data);
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
+    public function show($id)
+    {
+        $product = Products::find($id);
+        $user = Auth::user();
+        return view('products.show', compact('product', 'user'));
+    }
+    public function edit($id)
+    {
+        $product = Products::find($id);
+        $user = Auth::user();
+        return view('products.edit', compact('product', 'user'));
+    }
+    public function update(Request $request, $id)
+    {
+        $product = Products::find($id);
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('success', 'Product updated successfully');
+    }
+    public function destroy($id)
+    {
+        $product = Products::find($id);
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully');
+    }
 }

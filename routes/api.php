@@ -15,19 +15,21 @@ use App\Http\Controllers\Api\ProductsController;
 |
 */
 
-// Public Routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-// Protected Routes
-Route::middleware('auth:sanctum')->group(function () {
-    // Auth Routes
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/user', [AuthController::class, 'user']);
-
+Route::prefix('v1')->group(function () {
+    // Public Routes
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
     // Products Routes
     Route::apiResource('products', ProductsController::class);
+    // Protected Routes
+    Route::middleware('auth:sanctum')->group(function () {
+        // Auth Routes
+        Route::post('/logout', [AuthController::class, 'logout']);
+        Route::get('/user', [AuthController::class, 'user']);
 
-    // Additional Product Routes
-    Route::get('/products/search/{query}', [ProductsController::class, 'search']);
+
+
+        // Additional Product Routes
+        Route::get('/products/search/{query}', [ProductsController::class, 'search']);
+    });
 });

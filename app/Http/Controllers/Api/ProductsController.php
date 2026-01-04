@@ -23,31 +23,6 @@ class ProductsController extends Controller
     public function index(Request $request): JsonResponse
     {
         $query = Products::query();
-
-        // Filter by category
-        if ($request->has('category')) {
-            $query->where('category', $request->input('category'));
-        }
-
-        // Filter by brand
-        if ($request->has('brand')) {
-            $query->where('brand', $request->input('brand'));
-        }
-
-        // Filter by status
-        if ($request->has('status')) {
-            $query->where('status', $request->input('status'));
-        }
-
-        // Search by name or description
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                    ->orWhere('description', 'like', "%{$search}%");
-            });
-        }
-
         // Sort by field
         $sortBy = $request->input('sort_by', 'created_at');
         $sortOrder = $request->input('sort_order', 'desc');
@@ -56,7 +31,6 @@ class ProductsController extends Controller
         // Pagination
         $perPage = $request->input('per_page', 15);
         $products = $query->paginate($perPage);
-
         return response()->json([
             'success' => true,
             'message' => 'Products retrieved successfully',

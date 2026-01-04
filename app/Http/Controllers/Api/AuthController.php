@@ -42,7 +42,6 @@ class AuthController extends Controller
             'message' => 'User registered successfully',
             'data' => [
                 'user' => new UserResource($user),
-                'token' => $token,
             ],
         ], 201);
     }
@@ -60,13 +59,15 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (!Auth::attempt($validated)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+        if (!Auth::guard('backend')->attempt($validated)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid credentials',
+            ], 401);
         }
 
-        $user = $request->user();
+        $user = Auth::guard('backend')->user();
+
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
@@ -74,7 +75,7 @@ class AuthController extends Controller
             'message' => 'Login successful',
             'data' => [
                 'user' => new UserResource($user),
-                'token' => $token,
+                'accessToken' => $token,
             ],
         ]);
     }
